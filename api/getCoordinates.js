@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 
 module.exports = (req, res) => {
-    let apiQuery = `https://geo.ipify.org/api/v1?apiKey=${process.env.IPYFIKEY}}&ipAddress=8.8.8.8&domain=`;
+    let apiQuery = `https://geo.ipify.org/api/v1?apiKey=${process.env.IPYFIKEY}&ipAddress=8.8.8.8&domain=`;
 
     const { address = '8.8.8.8' } = req.query;
     apiQuery = apiQuery + `${address}`;
