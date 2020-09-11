@@ -1,19 +1,10 @@
-module.exports = (req, res) => {
-    let regEx = `\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.
-    (25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.
-    (25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.
-    (25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b`;
+const fetch = require("node-fetch");
 
-    let apiQuery = `https://geo.ipify.org/api/v1?apiKey=${process.env.IPYFIKEY}&ipAddress=`;
+module.exports = (req, res) => {
+    let apiQuery = `https://geo.ipify.org/api/v1?apiKey=${process.env.IPYFIKEY}}&ipAddress=8.8.8.8&domain=`;
 
     const { address = '8.8.8.8' } = req.query;
+    apiQuery = apiQuery + `${address}`;
 
-    if(regEx.test(address)) {
-        apiQuery = apiQuery + address;
-    }
-    else {
-        apiQuery = apiQuery + `8.8.8.8&domain=${address}`;
-    }
-
-    res.redirect(apiQuery);
-  }
+    fetch(apiQuery).then(x => x.json()).then(json => res.status(200).send(json));
+}
