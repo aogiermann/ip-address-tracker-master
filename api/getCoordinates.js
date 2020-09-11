@@ -6,11 +6,11 @@ module.exports = (req, res) => {
 
     let apiQuery = `https://geo.ipify.org/api/v1?apiKey=${process.env.IPYFIKEY}&ipAddress=`;
 
-    if(regEx.test($query)) {
-        apiQuery = apiQuery + $query;
+    if(regEx.test(address)) {
+        apiQuery = apiQuery + address;
     }
     else {
-        apiQuery = apiQuery + `8.8.8.8&domain=${$query}`;
+        apiQuery = apiQuery + `8.8.8.8&domain=${address}`;
     }
 
     res.redirect(apiQuery);
