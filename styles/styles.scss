@@ -48,6 +48,26 @@ body {
                 border-top-left-radius: 10px;
                 border-bottom-left-radius: 10px;
                 border-style: none;
+                width: 100%;
+                min-width: 80px;
+                max-width: 120px;
+            }
+            
+            @media(min-width: 900px) {
+                & #ipaddress {
+                    min-width: 300px;
+                    max-width: 600px;
+                }
+
+                & #ipaddress::placeholder {
+                    text-align: center;
+                }
+            }
+
+            @media(max-width: 900px) {
+                & #ipaddress::placeholder {
+                    color: white;
+                }
             }
 
             & .button {
@@ -80,6 +100,13 @@ body {
                 margin: 15px 10% 25px 10%;
                 top: 50px;
                 padding: 25px 0px;
+
+                .spliter {
+                    min-height: 50px;
+                    width: 1px;
+                    background-color: lightgray;
+                    display: block;
+                }
             }
             
             & .infocontainer {

@@ -44,6 +44,25 @@ body .container .searchbar #ipaddress {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   border-style: none;
+  width: 100%;
+  min-width: 80px;
+  max-width: 120px;
+}
+
+@media (min-width: 900px) {
+  body .container .searchbar #ipaddress {
+    min-width: 300px;
+    max-width: 600px;
+  }
+  body .container .searchbar #ipaddress::placeholder {
+    text-align: center;
+  }
+}
+
+@media (max-width: 900px) {
+  body .container .searchbar #ipaddress::placeholder {
+    color: white;
+  }
 }
 
 body .container .searchbar .button {
@@ -77,6 +96,12 @@ body .container .info {
     margin: 15px 10% 25px 10%;
     top: 50px;
     padding: 25px 0px;
+  }
+  body .container .info .spliter {
+    min-height: 50px;
+    width: 1px;
+    background-color: lightgray;
+    display: block;
   }
 }
 

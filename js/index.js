@@ -1,25 +1,26 @@
-    window.onload = function () {
-        fetch('https://api.ipify.org/?format=json')
+window.onload = function () {
+    fetch('https://api.ipify.org/?format=json')
         .then(response => response.json())
-        .then(data => displayIP(data['ip']));
-    };
+        .then(data => displayIP(data['ip']))
+        .catch(err => getCoordinates());
+};
 
-    async function displayIP(response) {
-        address = await response;
-        document.getElementById("ipaddress").value = address;
+async function displayIP(response) {
+    address = await response;
+    document.getElementById("ipaddress").value = address;
 
-        getCoordinates(address);
+    getCoordinates(address);
+}
+
+function getCoordinates(address) {
+    const serviceUrl = `https://ip-address-tracker-master-psi.vercel.app/api/getCoordinates?address=`;
+
+    if (address === undefined || address === '') {
+        address = document.getElementById("ipaddress").value;
     }
 
-    function getCoordinates(address){
-        const serviceUrl = `https://ip-address-tracker-master-psi.vercel.app/api/getCoordinates?address=`;
-
-        if(address === undefined || address === ''){
-            address = document.getElementById("ipaddress").value;
-        }
-
-        fetch(serviceUrl + address)
-        .then(function(response){
+    fetch(serviceUrl + address)
+        .then(function (response) {
             return response.json();
         })
         .then(data => {
@@ -31,10 +32,10 @@
 
             document.getElementById("ipaddress").value = '';
         })
+}
+
+function onHitEnter(e) {
+    if (e.keyCode == 13) {
+        getCoordinates();
     }
-    
-    function onHitEnter(e) {
-        if(e.keyCode == 13){
-            getCoordinates();
-        }
-    }
+}
