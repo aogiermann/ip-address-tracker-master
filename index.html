@@ -1,34 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <link rel="stylesheet" href="styles/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+
   <title>Frontend Mentor | IP Address Tracker</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
   </style>
 </head>
+
 <body>
 
-  IP Address Tracker
+  <div class="container">
+    <header>IP Address Tracker</header>
 
-  Search for any IP address or domain
-
-  IP Address
-  Location
-  Timezone
-    UTC <!-- add offset value dynamically using the API -->
-  ISP
-  
+    <div class="searchbar">
+      <input type="text" id="ipaddress" placeholder="Search for any IP address or domain" onkeypress="return onHitEnter(event)">
+      <button onclick="getCoordinates()" class="button"></button>
+    </div>
+    <div class="info">
+      <div class="infocontainer">
+        <div class="info__key">IP Address</div>
+        <div class="info__value" id="ip"></div>
+      </div>
+      <div class="infocontainer">
+        <div class="info__key">Location</div>
+        <div class="info__value" id="location"></div>
+      </div>
+      <div class="infocontainer">
+        <div class="info__key">Timezone</div>
+        <div class="info__value" id="timezone"></div>
+      </div>
+      <div class="infocontainer">
+        <div class="info__key">ISP</div>
+        <div class="info__value" id="isp"></div>
+      </div>
+    </div>
+  </div>
+  <div id="map">
+  </div>
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="https://github.com/aogiermann">Adam Ogiermann</a>.
   </div>
+
+  <!-- scripts -->
+  <script src="js/index.js"> </script>
+  <script src="js/map.js"> </script>
 </body>
+
 </html>
